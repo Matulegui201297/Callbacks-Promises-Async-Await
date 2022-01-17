@@ -59,7 +59,7 @@ getSueldoById(id, (error, sueldo) => {
         console.log('ERROR!!....');
         console.log(error);
         return;
-        }
+    }
 
     console.log(`El empleado: ${empleado.nombre} tiene un sueldo de ${sueldo.sueldo}`);
     });

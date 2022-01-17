@@ -27,10 +27,11 @@ const sueldos = [
 const getEmpleadoById = async (id) => {
     try {
         const empleado = empleados.find((e) => e.id === id );
-        if (empleado){
-            return(empleado);
+        if (empleado) {
+            return empleado;
         }
-    } catch (error){
+        throw new Error(`El empleado con id ${id} no existe`)
+    } catch (error) {
         throw error;
     }
 }
@@ -38,10 +39,11 @@ const getEmpleadoById = async (id) => {
 const getSueldoById = async (id) => {
     try {
         const sueldo = sueldos.find((s) => s.id === id );
-        if (sueldo){
-            return(sueldo);
+        if (sueldo) {
+            return sueldo;
         }
-    } catch (error){
+        throw new Error (`el sueldo con id ${id} no existe`)
+    } catch (error) {
         throw error;
     }
 }
@@ -50,10 +52,16 @@ const getSueldoById = async (id) => {
 const id = 1;
 
 const getDatosEmpleados = async(id) => {
+    try{
     const empleado = await getEmpleadoById(id);
-    console.log(`El empleado con id ${id} es ${empleado.nombre}`);
     const sueldo = await getSueldoById(id);
-    console.log(`El empleado con id ${id} tiene un sueldo de ${sueldo.sueldo}`);
+    return(`El empleado con id ${id} se llama ${empleado.nombre} y tiene un sueldo de ${sueldo.sueldo}`);}
+    catch(err){
+        throw(err);
+    }
+
 }
 
-getDatosEmpleados(id);
+getDatosEmpleados(id)
+    .then(mensaje => console.log(mensaje))
+    .catch(err => console.log(err.message));

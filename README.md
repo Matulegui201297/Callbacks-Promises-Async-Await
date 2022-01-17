@@ -6,4 +6,5 @@
 * Destructuracion
 * Callback basico
 * Calback Hell
+* Promesas
 * Async-Await
